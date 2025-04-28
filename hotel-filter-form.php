@@ -12,134 +12,15 @@ add_action('wp_enqueue_scripts', 'hotel_filter_form_assets');
 
 // Enqueue Scripts
 function hotel_filter_form_assets() {
+	
+	// Enqueue CSS
+    wp_enqueue_style('hotel-filter-form-style', plugin_dir_url(__FILE__) . 'assets/css/filter.css');
+	
     wp_enqueue_script('hotel-filter-ajax', plugin_dir_url(__FILE__) . 'assets/js/filter.js', ['jquery'], null, true);
     wp_localize_script('hotel-filter-ajax', 'hotelFilterAjax', [
         'ajaxurl' => admin_url('admin-ajax.php')
     ]);
 
-    wp_add_inline_style('wp-block-library', hotel_filter_custom_css());
-}
-
-// Simple form CSS
-function hotel_filter_custom_css() {
-    return <<<CSS
-#hotel-filter-form {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 15px;
-    align-items: flex-start;
-}
-#hotel-filter-form select {
-    min-width: 200px;
-    flex: 1;
-	padding: 9px 16px 9px 16px !important;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-.facilities-dropdown-wrapper .fc-label {
-    height: 41px;
-    padding: 9px 16px 9px 16px !important;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    line-height: 1.3em;
-}
-#hotel-filter-form button {
-    padding: 8px 20px;
-    height: 40px;
-    background-color: #EEBEAA;
-    font-family: "Roboto", Sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    fill: #1D2E5B;
-    color: #1D2E5B;
-    border-radius: 3px;
-    border: 1px solid #EEBEAA !important;
-}
-
-.facilities-dropdown-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 240px;
-}
-
-.fc-label {
-    border: 1px solid #ccc;
-    padding: 10px;
-    cursor: pointer;
-    background: #fff;
-    position: relative;
-}
-
-.fc-caret {
-    float: right;
-}
-
-.facilities-dropdown {
-    display: none;
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 999;
-}
-
-.facilities-dropdown.open {
-    display: block;
-}
-
-#facilities-search {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-.facilities-options {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.facility-option {
-    display: flex;
-    align-items: center;
-}
-.facility-option label {
-    margin-left: 5px;
-}
-.facilities-dropdown-wrapper.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.facilities-dropdown-wrapper.disabled .fc-label {
-    cursor: not-allowed;
-}
-#facilities-spinner img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.7;
-}
-/* Mobile */
-@media(max-width: 768px) {
-    .facilities-dropdown-wrapper {
-        width: 100%;
-		max-width: 100%;
-    }
-	#hotel-filter-form button {
-		width: 100%;
-	}
-    #hotel-filter-form {
-        flex-direction: column;
-    }
-    #hotel-filter-form select {
-        width: 100%;
-        min-width: unset;
-    }
-}
-CSS;
 }
 
 // Shortcode Output
