@@ -90,7 +90,7 @@ function hotel_filter_load_sub_zones() {
         'hide_empty' => true,
     ]);
 
-    echo '<option value="">Select Sub Destination</option>';
+    echo '<option value="">Sub Destination</option>';
     foreach ($terms as $term) {
         echo '<option value="' . esc_attr($term->term_id) . '">' . esc_html($term->name) . ' (' . $term->count . ')</option>';
     }
@@ -185,7 +185,7 @@ function load_holiday_types_callback() {
             ]);
 
             if (!empty($holiday_terms)) {
-                echo '<option value="">Select Holiday Type</option>';
+                echo '<option value="">Holiday Type</option>';
                 foreach ($holiday_terms as $term) {
                     // Now count only hotels matching this Holiday Type + Sub Destination
                     $related_hotels = get_posts([
