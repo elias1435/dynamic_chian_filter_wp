@@ -10,6 +10,9 @@
 	padding: 9px 16px 9px 16px !important;
     border: 1px solid #ddd;
     border-radius: 3px;
+	 -webkit-appearance: none;
+	 -moz-appearance: none;
+	 appearance: none;
 }
 .facilities-dropdown-wrapper .fc-label {
     height: 41px;
